@@ -1,11 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-
-function App() {
-  return <div>Hi everyone from React!</div>
-}
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root')
-)
+  document.getElementById('root'),
+);
