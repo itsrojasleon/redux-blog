@@ -66,6 +66,6 @@ module.exports = {
   },
   plugins: [
     htmlWebpackPlugin,
-    new ExtractTextPlugin('index.css'),
+    new ExtractTextPlugin('css/index.css'),
   ],
 };
