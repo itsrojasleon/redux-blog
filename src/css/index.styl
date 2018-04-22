@@ -1,3 +1,35 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis');
+// importing Montserrat font
+@import url('https://fonts.googleapis.com/css?family=Montserrat')
+// Parcials with Stylus
+@import "_vars.styl"
+
+// Global Styles
 *
-  font-family: 'Dosis', sans-serif
+  margin: 0
+  padding: 0
+.container
+  font-family: 'Montserrat', sans-serif
+  background-color: darkColor
+  color: lightColor
+  display: grid
+  justify-items: center
+  align-items: center
+  height: 100vh
+.title
+  animation-name: first
+  animation-duration: 1.5s
+  font-size: medium
+.instructions
+  animation-name: second
+  animation-duration: 1.5s
+
+@keyframes first
+  0%
+    font-size: big
+  100%
+    font-size: medium
+@keyframes second
+  0%
+    opacity: 0
+  100%
+    opacity: 1

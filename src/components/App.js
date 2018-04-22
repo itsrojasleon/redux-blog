@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import '../css/index.styl';
 
 class App extends Component {
   render() {
     return (
-      <div className="something">Something</div>
+      <div className="container">
+        <h1 className="title">React Simple Starter 💻</h1>
+      </div>
     );
   }
 }
