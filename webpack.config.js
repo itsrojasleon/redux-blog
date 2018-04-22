@@ -1,28 +1,29 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: './index.html',
-})
+});
 
-const config = {
+module.exports = {
   entry: [
     'babel-polyfill',
     'whatwg-fetch',
-    './src/index.js'
+    './src/index.js',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   stats: {
     colors: true,
     modules: true,
     reasons: true,
-    errorDetails: true
+    errorDetails: true,
   },
   module: {
     rules: [
@@ -30,21 +31,25 @@ const config = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          // 'postcss-loader',
-        ]
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader',
+        }),
+      },
+      {
+        test: /\.styl$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'stylus-loader'],
+        }),
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=.+)?$/,
@@ -54,24 +59,13 @@ const config = {
           outputPath: 'images/',
         },
       },
-    ]
+    ],
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
-    htmlWebpackPlugin
-  ]
-}
-
-if(process.env.NODE_ENV === 'production') {
-  config.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new config.optimization.minimize()
-  )
-}
-module.exports = config
+    htmlWebpackPlugin,
+    new ExtractTextPlugin('index.css'),
+  ],
+};
