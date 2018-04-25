@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading';
+
 import { handleInitialData } from '../actions/index';
 
 class PostsIndex extends Component {
@@ -7,16 +9,24 @@ class PostsIndex extends Component {
     this.props.dispatch(handleInitialData());
   }
   render() {
-    console.log(this.props.posts);
+    const { loading } = this.props;
     return (
-      <div>Post index</div>
+      <div>
+        <Fragment>
+          <LoadingBar />
+          {loading.default === 1
+            ? <p>Loading...</p>
+            : <div>Post index</div>
+          }
+        </Fragment>
+      </div>
     );
   }
 }
 function mapStateToProps(state) {
   return {
-    loading: state.loading,
     posts: state.posts,
+    loading: state.loadingBar,
   };
 }
 export default connect(mapStateToProps)(PostsIndex);
