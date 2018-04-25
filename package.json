@@ -1,14 +1,14 @@
 {
-  "name": "forecast",
+  "name": "redux-blog",
   "version": "1.0.0",
-  "description": "Forecast API",
+  "description": "Redux Blog App",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rojasleon/forecast.git"
+    "url": "git+https://github.com/rojasleon/redux-blog.git"
   },
   "keywords": [
     "React",
@@ -52,6 +52,7 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.4"

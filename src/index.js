@@ -1,11 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import PostsIndex from './components/posts-index';
+
+import store from './store';
 
 // CSS imported
 import './css/index.styl';
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Route path="/" exact component={PostsIndex} />
+      </div>
+    </Router>
+  </Provider>,
   document.getElementById('root'),
 );
