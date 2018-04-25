@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading';
+import postReducer from './postReducer';
 
 export default combineReducers({
-  state: state => state,
+  posts: postReducer,
+  loading: loadingBarReducer,
 });
