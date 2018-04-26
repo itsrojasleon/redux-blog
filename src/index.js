@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PostsIndex from './components/posts-index';
+import PostsNew from './components/posts-new';
 
 import store from './store';
 
@@ -13,7 +14,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
-        <Route path="/" exact component={PostsIndex} />
+        <Switch>
+          <Route path="/" exact component={PostsIndex} />
+          <Route path="/posts/new" component={PostsNew} />
+        </Switch>
       </div>
     </Router>
   </Provider>,

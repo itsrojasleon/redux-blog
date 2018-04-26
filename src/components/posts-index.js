@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import LoadingBar from 'react-redux-loading';
+import { Link } from 'react-router-dom';
 
 import { handleInitialData } from '../actions/index';
 
@@ -19,6 +20,11 @@ class PostsIndex extends Component {
           {loading.default === 1
             ? <p>Loading...</p>
             : <div>
+                <div>
+                  <Link to="/posts/new">
+                    Add a Post
+                  </Link>
+                </div>
                 <h2>Posts</h2>
                 <ul>
                   {
