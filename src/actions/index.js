@@ -1,14 +1,14 @@
-import { showLoading, hideLoading } from 'react-redux-loading';
-import { fetchPosts } from '../utils/api';
-import { receivePosts } from './receivePosts';
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const CREATE_POST = 'CREATE_POST';
+import axios from 'axios';
+const API_KEY = '?key=PAPERCLIP1234';
+const BASE_URL = 'https://reduxblog.herokuapp.com/api';
 
-export function handleInitialData() {
-  return (dispatch) => {
-    dispatch(showLoading());
-    return fetchPosts()
-      .then((posts) => {
-        dispatch(receivePosts(posts));
-        dispatch(hideLoading());
-      });
-  };
-}
+export const fetchPosts = () => {
+  return axios.get(`${BASE_URL}/posts`)
+    .then(posts => posts.json());
+};
+export const createPostApi = (values) => {
+  return axios.post(`${BASE_URL}/posts`, values)
+    .then(posts => posts.json());
+};

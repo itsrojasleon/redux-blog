@@ -12,7 +12,6 @@ class PostsIndex extends Component {
   }
   render() {
     const { loading, posts } = this.props;
-    console.log(posts);
     return (
       <div>
         <Fragment>
