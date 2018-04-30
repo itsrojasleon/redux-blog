@@ -1,10 +1,16 @@
 import _ from 'lodash';
-import { RECEIVE_POSTS } from '../actions/receivePosts';
+import { FETCH_POSTS, FETCH_POST } from '../actions/index';
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case RECEIVE_POSTS:
-      return _.mapKeys(action.posts, 'id');
+    case FETCH_POSTS:
+      return _.mapKeys(action.payload.data, 'id');
+    case FETCH_POST:
+      // const post = action.payload.data;
+      // const newState = { ...state };
+      // newState[post.id] = post;
+      // return newState;
+      return { ...state, [action.payload.data.id]: action.payload.data };
     default:
       return state;
   }

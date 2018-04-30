@@ -1,14 +1,30 @@
+import axios from 'axios';
+
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
-import axios from 'axios';
+export const FETCH_POST = 'FETCH_POST';
 const API_KEY = '?key=PAPERCLIP1234';
 const BASE_URL = 'https://reduxblog.herokuapp.com/api';
 
 export const fetchPosts = () => {
-  return axios.get(`${BASE_URL}/posts`)
-    .then(posts => posts.json());
+  const request = axios.get(`${BASE_URL}/posts`);
+  return {
+    type: FETCH_POSTS,
+    payload: request,
+  };
 };
-export const createPostApi = (values) => {
-  return axios.post(`${BASE_URL}/posts`, values)
-    .then(posts => posts.json());
+export const createPost = (values, callback) => {
+  const request = axios.post(`${BASE_URL}/posts`, values)
+    .then(() => callback());
+  return {
+    type: CREATE_POST,
+    payload: request,
+  };
 };
+export function fetchPost(id) {
+  const request = axios.get(`${BASE_URL}/posts/${id}`);
+  return {
+    type: FETCH_POST,
+    payload: request,
+  };
+}
