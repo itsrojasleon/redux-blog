@@ -15,16 +15,22 @@ class PostsIndex extends Component {
       <div>
         <Fragment>
           {!posts
-            ? <div>Loading inital data...</div>
-            : <div>
-                <Link to="/posts/new">
-                  Add a Post
-                </Link>
-                <h2>Posts</h2>
-                <ul>
+            ? <div className="loading">Loading inital data...</div>
+            : <div className="container">
+                <div className="header">
+                  <h2 className="posts">Posts</h2>
+                  <Link className="add-post" to="/posts/new">
+                    > Add a Post
+                  </Link>
+                </div>
+                <ul className="posts-list">
                   {
                     _.map(this.props.posts, (post) => {
-                      return <li key={post.id}><Link to={`/posts/${post.id}`}>{post.title}</Link></li>;
+                      return <li style={{ marginBottom: '40px' }} key={post.id}>
+                              <Link className="post-link" to={`/posts/${post.id}`}>{post.title}</Link>
+                              <p className="categorie">{post.categories.toUpperCase()}</p>
+                              <p className="content">{post.content}</p>
+                             </li>;
                     })
                   }
                 </ul>
