@@ -1,0 +1,58 @@
+@import url(https://fonts.googleapis.com/css?family=Gothic+A1);.loading {
+  font-size: 80px;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.container {
+  width: 85%;
+  margin: auto;
+}
+.posts {
+  font-size: 50px;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #ccc;
+}
+.posts-list {
+  display: grid;
+  grid-template-columns: repeat(4, 3fr);
+  list-style: none;
+  grid-gap: 20px;
+  justify-items: stretch;
+  align-items: center;
+}
+.post-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 32px;
+  transition: 0.3s;
+}
+.post-link:hover {
+  text-decoration: underline;
+}
+.categorie {
+  color: #212121;
+}
+.content {
+  color: #727272;
+}
+.add-post {
+  color: #000;
+  text-decoration: none;
+  font-size: 23px;
+}
+.add-post:hover {
+  text-decoration: underline;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gothic A1', sans-serif;
+}

@@ -2,13 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: './index.html',
 });
 
-module.exports = {
+const config = {
   entry: [
     'babel-polyfill',
     'whatwg-fetch',
@@ -69,3 +70,12 @@ module.exports = {
     new ExtractTextPlugin('css/index.css'),
   ],
 };
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new UglifyJsPlugin(),
+  );
+}
+module.exports = config;
