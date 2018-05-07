@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "Redux Blog App",
   "main": "index.js",
-  "homepage": "https://rojasleon.github.io/redux-blog",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
